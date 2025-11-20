@@ -3,9 +3,13 @@ import boto3
 import urllib.parse
 
 # --- AWS Setup ---
-AWS_REGION = "eu-north-1"
-S3_BUCKET = "student-analytics1"
-DYNAMO_TABLE = "StudentAnalyticsData1"
+import os
+
+# AWS Configuration - using environment variables
+AWS_REGION = os.getenv("AWS_REGION", "eu-north-1")
+S3_BUCKET = os.getenv("S3_BUCKET", "student-analytics1")
+DYNAMO_TABLE = os.getenv("DYNAMO_TABLE", "StudentAnalyticsData1")
+
 
 s3 = boto3.client("s3", region_name=AWS_REGION)
 dynamodb = boto3.resource("dynamodb", region_name=AWS_REGION)
@@ -45,4 +49,5 @@ if st.button("View Assignments"):
                     encoded_url = urllib.parse.quote(url, safe=':/?&=%')
                     st.markdown(f"[⬇️ Download {file_name}]({encoded_url})", unsafe_allow_html=True)
                 except Exception as e:
+
                     st.error(f"Could not generate download link: {e}")
