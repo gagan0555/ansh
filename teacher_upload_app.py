@@ -4,9 +4,13 @@ import datetime
 from botocore.exceptions import NoCredentialsError
 
 # --- AWS Setup ---
-AWS_REGION = "eu-north-1"  # your region
-S3_BUCKET = "student-analytics1"  # your S3 bucket name
-DYNAMO_TABLE = "StudentAnalyticsData1"  # your DynamoDB table name
+import os
+
+# --- AWS Setup ---
+AWS_REGION = os.getenv("AWS_REGION", "eu-north-1")
+S3_BUCKET = os.getenv("S3_BUCKET", "student-analytics1")
+DYNAMO_TABLE = os.getenv("DYNAMO_TABLE", "StudentAnalyticsData1")
+
 
 s3 = boto3.client("s3", region_name=AWS_REGION)
 dynamodb = boto3.resource("dynamodb", region_name=AWS_REGION)
@@ -58,4 +62,5 @@ if st.button("Upload"):
         except Exception as e:
             st.error(f"❌ Upload failed: {e}")
     else:
+
         st.warning("Please enter Student ID and select a file.")
