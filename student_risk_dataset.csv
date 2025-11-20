@@ -1,0 +1,8 @@
+StudentID,Marks,Attendance,MedicalCertificate,Status
+24012681	85	92	No	      Pass
+240211765	45	40	Yes    	      Fail
+24022619	72	75	No	      Pass
+240211420	55	50	No	      Fail
+24023563	87	67	No	      Pass
+240211430	35	38	Yes	      Fail
+240211440	65	70	No	      Pass
