@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Secrets - NEVER commit these!
+.env.local
+secrets.txt
+config.ini
+*.key
+*.pem
+
+# AWS
+.aws/
+
+# Logs
+*.log
+logs/
