@@ -11,10 +11,14 @@ from botocore.exceptions import NoCredentialsError
 # ---------------------
 # CONFIG
 # ---------------------
-AWS_REGION = "eu-north-1"
-S3_BUCKET = "student-analytics1"
-DYNAMO_TABLE = "StudentAnalyticsData1"
-MODEL_KEY = "models/student_risk_model.pkl"  # confirm this path in your S3
+import os
+
+# AWS Configuration - using environment variables
+AWS_REGION = os.getenv("AWS_REGION", "eu-north-1")
+S3_BUCKET = os.getenv("S3_BUCKET", "student-analytics1")
+DYNAMO_TABLE = os.getenv("DYNAMO_TABLE", "StudentAnalyticsData1")
+MODEL_KEY = os.getenv("MODEL_KEY", "models/student_risk_model.pkl")
+
 
 # AWS clients
 s3 = boto3.client("s3", region_name=AWS_REGION)
@@ -361,4 +365,5 @@ elif st.session_state.get("role") == "Student":
 # Not logged in
 # ---------------------
 else:
+
     st.info("Please log in as Teacher or Student to continue.")
